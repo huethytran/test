@@ -1,26 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import logo from './logo.svg';
+import { Provider } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Route,
+  HashRouter,
+  Switch
+} from 'react-router-dom';
+import 'antd/dist/antd.css';
 import './App.css';
+import Login from './containers/Login';
+import Register from './components/Register';
+import Home from './components/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const Root = ({ store }) => (
+  <Provider store={store}>
+    <HashRouter>
+      <Router>
+        <Switch>
+        <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          
+        </Switch>
+      </Router>
+    </HashRouter>
+  </Provider>
+);
+Root.propTypes = {
+  store: PropTypes.object.isRequired
+};
 
-export default App;
+export default Root;
