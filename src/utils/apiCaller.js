@@ -5,14 +5,14 @@ export function callApiLogin(body) {
   return axios({
     method: 'POST',
     data: body,
-    url: `https://cors-anywhere.herokuapp.com/${api_url}/user/login`
+    url: `${api_url}/user/login`
   });
 }
 export function callApiRegister(body) {
     return axios({
       method: 'POST',
       data: body,
-      url: `https://cors-anywhere.herokuapp.com/${api_url}/user/register`
+      url: `${api_url}/user/register`
     });
   }
   export function callApiGetInfo() {
@@ -22,6 +22,6 @@ export function callApiRegister(body) {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('usertoken')}`
       },
-      url: `https://cors-anywhere.herokuapp.com/${api_url}/user/self`
+      url: `${api_url}/user/self`
     });
   }

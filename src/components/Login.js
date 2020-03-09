@@ -20,7 +20,7 @@ class Login extends React.Component {
   }
   render() {
     const { loginErr, getUser } = this.props;
-    
+    console.log(localStorage.getItem("usertoken"))
     if (localStorage.getItem("usertoken")!= null) getUser();
     return (
       <div
